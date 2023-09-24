@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nots_app/Constns.dart';
 
 class CustomBottom extends StatelessWidget {
   const CustomBottom({this.ontap, super.key, required this.text});
@@ -11,14 +12,14 @@ class CustomBottom extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.blue,
+          color: kPrimaryColor,
         ),
         height: 50,
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         child: Center(
             child: Text(
           text,
-          style: const TextStyle(fontSize: 16,color: Colors.white),
+          style: const TextStyle(fontSize: 16,color: Colors.black),
         )),
       ),
     );

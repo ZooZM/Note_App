@@ -8,6 +8,9 @@ class Home_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Set the key to scaffoldKey if you have one
+      // key: scaffoldKey,
+      resizeToAvoidBottomInset: true,
         floatingActionButton: FloatingActionButton(
           
             onPressed: () {

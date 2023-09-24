@@ -9,14 +9,18 @@ class ShowModelBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding:  EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-      child:  Column(
-        children: [
-         CustomTextField(text: 'Title',),
-         SizedBox(height: 15,),
-         CustomTextField(text: 'Content',),
-         Spacer(),
-         CustomBottom(text: 'Add')
-        ],
+      child:  SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(height: 5,),
+           CustomTextField(text: 'Title',),
+           SizedBox(height: 15,),
+           CustomTextField(text: 'Content',MaxLines: 6,Maxlength: 300,),
+           SizedBox(height: 25,),
+           CustomBottom(text: 'Add')
+          ],
+        ),
       ),
     );
   }
