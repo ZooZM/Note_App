@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-class Custom_Search_Bottom extends StatelessWidget {
-  const Custom_Search_Bottom({super.key});
-
+class Custom_AppBar_Bottom extends StatelessWidget {
+  const Custom_AppBar_Bottom({super.key,required this.icon});
+  final Icon icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +13,7 @@ class Custom_Search_Bottom extends StatelessWidget {
         color: Colors.white.withOpacity(0.05),
         borderRadius: BorderRadius.circular(16)
       ),
-      child: Icon(Icons.search),
+      child: icon,
     );
   }
 }

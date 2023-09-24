@@ -6,23 +6,23 @@ class CustomTextField extends StatelessWidget {
       {this.onChanged,
       super.key,
       this.text,
-      this.MaxLines = 1,
+      this.maxlines = 1,
       this.counter,
-      this.Maxlength = 10});
+      this.maxlength = 10});
 
   final String? text;
   final Function(String)? onChanged;
-  final int MaxLines;
-  final int Maxlength;
+  final int maxlines;
+  final int maxlength;
   final int? counter;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
 
-      maxLines: MaxLines,
+      maxLines: maxlines,
       onChanged: onChanged,
-      maxLength: Maxlength,
+      maxLength: maxlength,
 
       decoration: InputDecoration(
 

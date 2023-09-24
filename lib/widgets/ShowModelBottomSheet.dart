@@ -16,7 +16,7 @@ class ShowModelBottomSheet extends StatelessWidget {
             SizedBox(height: 5,),
            CustomTextField(text: 'Title',),
            SizedBox(height: 15,),
-           CustomTextField(text: 'Content',MaxLines: 6,Maxlength: 300,),
+           CustomTextField(text: 'Content',maxlines: 6,maxlength: 600,),
            SizedBox(height: 25,),
            CustomBottom(text: 'Add')
           ],

@@ -14,7 +14,7 @@ class Noteview extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          Csutom_AppBar(),
+          Csutom_AppBar(title: 'Notes',icon: Icon(Icons.search)),
           Expanded(child: NoteListview())
         ],
       ),
