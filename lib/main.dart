@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:nots_app/Constns.dart';
 import 'package:nots_app/views/Edite_Note_Page.dart';
 import 'package:nots_app/views/Home_Page.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.openBox(kNotesBox);
   runApp(const Nots_App());
 }
 class Nots_App extends StatelessWidget {
