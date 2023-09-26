@@ -19,11 +19,11 @@ class Home_Page extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16)),
                 context: context,
                 builder: (context) {
-                  return ShowModelBottomSheet();
+                  return const ShowModelBottomSheet();
                 },
               );
             },
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
             ),
         body: const Noteview());
   }

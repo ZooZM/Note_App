@@ -8,19 +8,66 @@ class ShowModelBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-      child:  SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            SizedBox(height: 5,),
-           CustomTextField(text: 'Title',),
-           SizedBox(height: 15,),
-           CustomTextField(text: 'Content',maxlines: 6,maxlength: 600,),
-           SizedBox(height: 25,),
-           CustomBottom(text: 'Add')
-          ],
-        ),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(), child: formkey()),
+    );
+  }
+}
+
+class formkey extends StatefulWidget {
+  const formkey({super.key});
+
+  @override
+  State<formkey> createState() => _formkeyState();
+}
+
+class _formkeyState extends State<formkey> {
+  final GlobalKey<FormState> formkey = GlobalKey();
+  AutovalidateMode? autovalidateMode;
+  String? title, subtite;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formkey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 5,
+          ),
+          CustomTextField(
+            text: 'Title',
+            onsaved: (p0) {
+              title=p0;
+            },
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          CustomTextField(
+            text: 'Content',
+            maxlines: 6,
+            maxlength: 600,
+            onsaved: (p0) {
+              subtite = p0;
+            },
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          CustomBottom(
+            text: 'Add',
+            ontap: () {
+              if (formkey.currentState!.validate()) {
+                formkey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          )
+        ],
       ),
     );
   }
