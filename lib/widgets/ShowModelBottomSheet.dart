@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nots_app/Models/Note_Model.dart';
 import 'package:nots_app/cubit/cubit/add_notes_cubit.dart';
 import 'package:nots_app/widgets/CustomBottom.dart';
 import 'package:nots_app/widgets/Custom_TextField.dart';
@@ -9,10 +10,13 @@ class ShowModelBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNotesCubit,AddNotesState>(
+    return BlocConsumer<AddNotesCubit, AddNotesState>(
       listener: (context, state) {
-        if(State is AddNotesSuccess){
+        if (State is AddNotesSuccess) {
           Navigator.pop(context);
+        }
+        if(state is AddNotesfailure){
+          print('failuer ${state.erMes}');
         }
       },
       builder: (context, state) {
@@ -32,7 +36,7 @@ class formkey extends StatefulWidget {
 class _formkeyState extends State<formkey> {
   final GlobalKey<FormState> formkey = GlobalKey();
   AutovalidateMode? autovalidateMode;
-  String? title, subtite;
+  String? title, subtitle;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,7 +65,7 @@ class _formkeyState extends State<formkey> {
                     maxlines: 6,
                     maxlength: 600,
                     onsaved: (p0) {
-                      subtite = p0;
+                      subtitle = p0;
                     },
                   ),
                   const SizedBox(
@@ -72,6 +76,13 @@ class _formkeyState extends State<formkey> {
                     ontap: () {
                       if (formkey.currentState!.validate()) {
                         formkey.currentState!.save();
+                        var note = NoteModel(
+                            title: title!,
+                            subtitle: subtitle!,
+                            date: DateTime.now().toString(),
+                            color: Colors.blue.value);
+
+                        BlocProvider.of<AddNotesCubit>(context).addNote(note);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
