@@ -19,7 +19,7 @@ class Home_Page extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16)),
                 context: context,
                 builder: (context) {
-                  return const ShowModelBottomSheet();
+                  return const AddNoteBottomSheet();
                 },
               );
             },

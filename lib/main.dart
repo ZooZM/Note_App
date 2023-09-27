@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:nots_app/Constns.dart';
 import 'package:nots_app/Models/Note_Model.dart';
-import 'package:nots_app/cubit/cubit/add_notes_cubit.dart';
 import 'package:nots_app/simple_Bloc_Observer.dart';
 import 'package:nots_app/views/Edite_Note_Page.dart';
 import 'package:nots_app/views/Home_Page.dart';

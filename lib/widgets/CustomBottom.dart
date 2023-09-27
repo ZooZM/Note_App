@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nots_app/Constns.dart';
 
 class CustomBottom extends StatelessWidget {
-  const CustomBottom({this.ontap, super.key, required this.text});
+  const CustomBottom(
+      {this.ontap, super.key, required this.text, this.islouding = false});
   final String text;
   final VoidCallback? ontap;
+  final bool islouding;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -17,10 +19,14 @@ class CustomBottom extends StatelessWidget {
         height: 50,
         width: MediaQuery.of(context).size.width,
         child: Center(
-            child: Text(
-          text,
-          style: const TextStyle(fontSize: 16,color: Colors.black),
-        )),
+            child: islouding
+                ? const CircularProgressIndicator(
+                    color: Colors.white,
+                  )
+                : Text(
+                    text,
+                    style: const TextStyle(fontSize: 16, color: Colors.black),
+                  )),
       ),
     );
   }
