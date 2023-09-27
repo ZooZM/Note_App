@@ -11,6 +11,7 @@ import 'package:nots_app/views/Home_Page.dart';
 void main() async {
   Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
   Hive.openBox<NoteModel>(kNotesBox);
   runApp(const Nots_App());
 }
@@ -20,19 +21,14 @@ class Nots_App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AddNotesCubit(),)
-      ],
-      child: MaterialApp(
-        routes: {
-          const Home_Page().id: (context) => const Home_Page(),
-          const Edite_Note_page().id: (context) => const Edite_Note_page()
-        },
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
-        initialRoute: const Home_Page().id,
-      ),
+    return MaterialApp(
+      routes: {
+        const Home_Page().id: (context) => const Home_Page(),
+        const Edite_Note_page().id: (context) => const Edite_Note_page()
+      },
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
+      initialRoute: const Home_Page().id,
     );
   }
 }

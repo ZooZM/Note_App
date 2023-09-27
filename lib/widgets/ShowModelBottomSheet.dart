@@ -10,18 +10,21 @@ class ShowModelBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNotesCubit, AddNotesState>(
-      listener: (context, state) {
-        if (State is AddNotesSuccess) {
-          Navigator.pop(context);
-        }
-        if(state is AddNotesfailure){
-          print('failuer ${state.erMes}');
-        }
-      },
-      builder: (context, state) {
-        return formkey();
-      },
+    return BlocProvider(
+      create: (context) => AddNotesCubit(),
+      child: BlocConsumer<AddNotesCubit, AddNotesState>(
+        listener: (context, state) {
+          if (State is AddNotesSuccess) {
+            Navigator.pop(context);
+          }
+          if (state is AddNotesfailure) {
+            print('failuer ${state.erMes}');
+          }
+        },
+        builder: (context, state) {
+          return formkey();
+        },
+      ),
     );
   }
 }
