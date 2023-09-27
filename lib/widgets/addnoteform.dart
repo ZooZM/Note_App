@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:nots_app/Models/Note_Model.dart';
 import 'package:nots_app/cubit/add_cubit/add_notes_cubit.dart';
+import 'package:nots_app/cubit/notes_cubit/notes_cubit.dart';
 import 'package:nots_app/widgets/CustomBottom.dart';
 import 'package:nots_app/widgets/Custom_TextField.dart';
 
@@ -50,6 +52,7 @@ class _addnoteformState extends State<addnoteform> {
               ),
               BlocBuilder<AddNotesCubit, AddNotesState>(
                 builder: (context, state) {
+                  var formatdate= DateFormat("yyyy-MM-dd").format(DateTime.now());
                   return CustomBottom(
                     islouding: state is AddNoteslouding ? true : false,
                     text: 'Add',
@@ -59,11 +62,12 @@ class _addnoteformState extends State<addnoteform> {
                         var note = NoteModel(
                             title: title!,
                             subtitle: subtitle!,
-                            date: DateTime.now().toString(),
+                            date: formatdate.toString(),
                             color: Colors.blue.value);
 
-                        BlocProvider.of<AddNotesCubit>(context)
-                            .addNote(note);
+                        BlocProvider.of<AddNotesCubit>(context).addNote(note);
+                        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                        Navigator.pop(context);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
