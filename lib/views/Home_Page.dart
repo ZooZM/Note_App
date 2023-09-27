@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nots_app/widgets/Noteview.dart';
-import 'package:nots_app/widgets/ShowModelBottomSheet.dart';
+import 'package:nots_app/widgets/AddNoteBottomSheet.dart';
 
 class Home_Page extends StatelessWidget {
   const Home_Page({super.key});

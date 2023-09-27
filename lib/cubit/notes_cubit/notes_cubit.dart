@@ -13,6 +13,6 @@ class NotesCubit extends Cubit<NotesState> {
   fitchNotes(){
    Box<NoteModel> notebox= Hive.box(kNotesBox);
     notes= notebox.values.toList();
-    return notes;
+   
   }
 }
