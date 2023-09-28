@@ -4,10 +4,11 @@ import 'package:nots_app/Models/Note_Model.dart';
 import 'package:nots_app/cubit/notes_cubit/notes_cubit.dart';
 import 'package:nots_app/widgets/CustomBottom.dart';
 import 'package:nots_app/widgets/Custom_TextField.dart';
+import 'package:nots_app/widgets/edite_color_Listview.dart';
 
 class EditeNoteBody extends StatefulWidget {
-   EditeNoteBody({super.key, required this.note});
-   NoteModel note;
+  const EditeNoteBody({super.key, required this.note});
+  final NoteModel note;
   @override
   State<EditeNoteBody> createState() => _EditeNoteBodyState();
 }
@@ -51,6 +52,7 @@ class _EditeNoteBodyState extends State<EditeNoteBody> {
             maxlines: 6,
             maxlength: 600,
           ),
+          EditeColorListview(note: widget.note),
           const SizedBox(height: 20,),
           CustomBottom(text: 'Edite',ontap: () {
             widget.note.title = title?? widget.note.title;
