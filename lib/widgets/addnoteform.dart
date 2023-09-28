@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:nots_app/Constns.dart';
 import 'package:nots_app/Models/Note_Model.dart';
 import 'package:nots_app/cubit/add_cubit/add_notes_cubit.dart';
 import 'package:nots_app/cubit/notes_cubit/notes_cubit.dart';
+import 'package:nots_app/widgets/Colors_Listview.dart';
 import 'package:nots_app/widgets/CustomBottom.dart';
 import 'package:nots_app/widgets/Custom_TextField.dart';
 
@@ -47,6 +49,7 @@ class _addnoteformState extends State<addnoteform> {
                   subtitle = p0;
                 },
               ),
+              ColorsListview(),
               const SizedBox(
                 height: 25,
               ),
@@ -63,7 +66,7 @@ class _addnoteformState extends State<addnoteform> {
                             title: title!,
                             subtitle: subtitle!,
                             date: formatdate.toString(),
-                            color: Colors.blue.value);
+                            color: kColors[0].value );
 
                         BlocProvider.of<AddNotesCubit>(context).addNote(note);
                         BlocProvider.of<NotesCubit>(context).fetchAllNotes();

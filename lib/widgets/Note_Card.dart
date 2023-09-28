@@ -5,8 +5,9 @@ import 'package:nots_app/cubit/notes_cubit/notes_cubit.dart';
 import 'package:nots_app/views/Edite_Note_Page.dart';
 
 class Note_Card extends StatelessWidget {
-  const Note_Card({super.key, required this.note});
+  const Note_Card({super.key, required this.note, this.color});
   final NoteModel note;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
