@@ -10,7 +10,7 @@ class CustomTextField extends StatefulWidget {
       this.text,
       this.maxlines = 1,
       this.counter,
-      this.maxlength = 10,
+      this.maxlength = 20,
       this.onChanged, this.cText,
       
       });

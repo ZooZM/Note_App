@@ -19,48 +19,50 @@ class _EditeNoteBodyState extends State<EditeNoteBody> {
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 50,
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Edite Note',style:  TextStyle(fontSize: 26))
-            ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          CustomTextField(
-            cText: widget.note.title,
-            onChanged: (p0) {
-              title=p0;
-            },
-            text: 'Title',
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          CustomTextField(
-            cText: widget.note.subtitle,
-            onChanged: (p0) {
-              subtitle=p0;
-            },
-            text: 'Content',
-            maxlines: 6,
-            maxlength: 600,
-          ),
-          EditeColorListview(note: widget.note),
-          const SizedBox(height: 20,),
-          CustomBottom(text: 'Edite',ontap: () {
-            widget.note.title = title?? widget.note.title;
-            widget.note.subtitle= subtitle?? widget.note.subtitle;
-            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-            Navigator.pop(context);
-          },)
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Edite Note',style:  TextStyle(fontSize: 26))
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            CustomTextField(
+              cText: widget.note.title,
+              onChanged: (p0) {
+                title=p0;
+              },
+              text: 'Title',
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            CustomTextField(
+              cText: widget.note.subtitle,
+              onChanged: (p0) {
+                subtitle=p0;
+              },
+              text: 'Content',
+              maxlines: 6,
+              maxlength: 600,
+            ),
+            EditeColorListview(note: widget.note),
+            const SizedBox(height: 20,),
+            CustomBottom(text: 'Edite',ontap: () {
+              widget.note.title = title?? widget.note.title;
+              widget.note.subtitle= subtitle?? widget.note.subtitle;
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+              Navigator.pop(context);
+            },)
+          ],
+        ),
       ),
     );
   }
