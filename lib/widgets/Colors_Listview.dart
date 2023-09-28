@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nots_app/Constns.dart';
+import 'package:nots_app/cubit/add_cubit/add_notes_cubit.dart';
 
 class Circle_Color extends StatelessWidget {
   const Circle_Color({super.key, required this.ischecked, required this.color});
@@ -44,6 +46,7 @@ class _ColorsListviewState extends State<ColorsListview> {
           return GestureDetector(
             onTap: () {
               cout = index;
+              BlocProvider.of<AddNotesCubit>(context).color = kColors[cout];
               setState(() {});
             },
             child: Circle_Color(ischecked: cout == index, color: kColors[index] ,)

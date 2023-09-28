@@ -66,7 +66,7 @@ class _addnoteformState extends State<addnoteform> {
                             title: title!,
                             subtitle: subtitle!,
                             date: formatdate.toString(),
-                            color: kColors[0].value );
+                            color: Colors.blue.value );
 
                         BlocProvider.of<AddNotesCubit>(context).addNote(note);
                         BlocProvider.of<NotesCubit>(context).fetchAllNotes();
