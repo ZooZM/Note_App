@@ -12,7 +12,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
-  Hive.openBox<NoteModel>(kNotesBox);
+  await Hive.openBox<NoteModel>(kNotesBox);
   runApp(const Nots_App());
 }
 
@@ -26,7 +26,7 @@ class Nots_App extends StatelessWidget {
       child: MaterialApp(
         routes: {
           const Home_Page().id: (context) => const Home_Page(),
-          const Edite_Note_page().id: (context) => const Edite_Note_page()
+           Edite_Note_page().id: (context) =>  Edite_Note_page()
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),

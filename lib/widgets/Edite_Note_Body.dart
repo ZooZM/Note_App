@@ -1,40 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:nots_app/widgets/Csutom_AppBar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nots_app/Models/Note_Model.dart';
+import 'package:nots_app/cubit/notes_cubit/notes_cubit.dart';
 import 'package:nots_app/widgets/CustomBottom.dart';
 import 'package:nots_app/widgets/Custom_TextField.dart';
 
-class EditeNoteBody extends StatelessWidget {
-  const EditeNoteBody({super.key});
+class EditeNoteBody extends StatefulWidget {
+   EditeNoteBody({super.key, required this.note});
+   NoteModel note;
+  @override
+  State<EditeNoteBody> createState() => _EditeNoteBodyState();
+}
 
+class _EditeNoteBodyState extends State<EditeNoteBody> {
+  String? title,subtitle;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          Csutom_AppBar(
-            title: 'Edite Note',
-            icon: Icon(Icons.check),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Edite Note',style:  TextStyle(fontSize: 26))
+            ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           CustomTextField(
+            cText: widget.note.title,
+            onChanged: (p0) {
+              title=p0;
+            },
             text: 'Title',
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           CustomTextField(
+            cText: widget.note.subtitle,
+            onChanged: (p0) {
+              subtitle=p0;
+            },
             text: 'Content',
             maxlines: 6,
             maxlength: 600,
           ),
-          SizedBox(height: 20,),
-          CustomBottom(text: 'Edite')
+          const SizedBox(height: 20,),
+          CustomBottom(text: 'Edite',ontap: () {
+            widget.note.title = title?? widget.note.title;
+            widget.note.subtitle= subtitle?? widget.note.subtitle;
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+            Navigator.pop(context);
+          },)
         ],
       ),
     );

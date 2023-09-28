@@ -9,10 +9,9 @@ class NoteListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
     return BlocBuilder<NotesCubit,NotesState>(
       builder: (context, state) {
-        List<NoteModel> notes=BlocProvider.of<NotesCubit>(context).notes!;
+        List<NoteModel> notes=BlocProvider.of<NotesCubit>(context).notes??[];
         return ListView.builder(
           physics: const BouncingScrollPhysics(),
           itemCount: notes.length,
