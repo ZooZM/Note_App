@@ -20,7 +20,7 @@ class Home_Page extends StatelessWidget {
                 },
               );
             },
-            child: const Icon(Icons.add),
+            child: const Icon(Icons.note_add),
             ),
         body: const SafeArea(child: Noteview()));
   }
