@@ -9,7 +9,7 @@ class Edite_Note_page extends StatelessWidget {
   Widget build(BuildContext context) {
     final NoteModel note = ModalRoute.of(context)!.settings.arguments as NoteModel;
     return  Scaffold(
-      body: EditeNoteBody(note: note) ,
+      body: SafeArea(child: EditeNoteBody(note: note)) ,
     );
   }
 }

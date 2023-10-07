@@ -56,7 +56,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLength: widget.maxlength,
 
       decoration: InputDecoration(
-
           alignLabelWithHint: true,
           labelText: widget.text,
           labelStyle: const TextStyle(color: kPrimaryColor),

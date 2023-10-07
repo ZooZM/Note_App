@@ -22,9 +22,7 @@ class _EditeNoteBodyState extends State<EditeNoteBody> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 5,),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

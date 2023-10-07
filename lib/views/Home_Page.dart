@@ -9,7 +9,6 @@ class Home_Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          
             onPressed: () {
               showModalBottomSheet(
                 isScrollControlled: true,
@@ -23,6 +22,6 @@ class Home_Page extends StatelessWidget {
             },
             child: const Icon(Icons.add),
             ),
-        body: const Noteview());
+        body: const SafeArea(child: Noteview()));
   }
 }

@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nots_app/Constns.dart';
 import 'package:nots_app/views/Home_Page.dart';
 
 class splash_screen extends StatefulWidget {
@@ -35,26 +33,23 @@ class _splash_screenState extends State<splash_screen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.blue, Colors.purple],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft)),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.note,
-              size: 100,
-              color: Colors.black,
+    return const Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.note,
+            size: 100,
+          ),
+          Center(
+            child: Text(
+              "Notes",
+              style: TextStyle(
+                fontSize: 24,
+              ),
             ),
-            Center(
-                child: Text("Notes",
-                    style: TextStyle(fontSize: 24, color: Colors.black)))
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
